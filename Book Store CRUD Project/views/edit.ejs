@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+</head>
+<body>
+    
+    <center>
+        <hr>
+        <h1>Edit Book Info</h1>
+        <hr><br><br>
+
+        <form action="/updateBook?id=<%= editData.id %>" method="post">
+
+            <label for="image_link">Image Link:</label><br>
+            <input type="text" id="image_link" name="image_link" value="<%= editData.image_link %>" required><br><br>
+
+            <label for="book_name">Book Name:</label><br>
+            <input type="text" id="book_name" name="title" value="<%= editData.title %>" required><br><br>
+
+            <label for="author">Author:</label><br>
+            <input type="text" id="author" name="author" value="<%= editData.author %>" required><br><br>
+
+            <label for="published_year">Published Year:</label><br>
+            <input type="text" id="published_year" name="published_year" value="<%= editData.published_year %>" required><br><br>
+
+            <label for="pages">Pages:</label><br>
+            <input type="text" id="pages" name="pages" value="<%= editData.pages %>" required><br><br>
+
+            <label for="published_copies">Published Copies:</label><br>
+            <input type="text" id="published_copies" name="published_copies" value="<%= editData.published_copies %>" required><br><br>
+
+            <input type="submit">
+        </form>
+    </center>
+
+</body>
+</html>

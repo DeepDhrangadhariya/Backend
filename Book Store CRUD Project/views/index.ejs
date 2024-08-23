@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            /* height: 100vh; */
+        }
+
+        .container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            margin-top: 20px;
+            /* overflow: scroll; */
+        }
+        
+        .form-div{
+            position: sticky;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* overflow-y: auto; */
+            position: sticky;
+        }
+
+        form input[type="text"],
+        form input[type="submit"] {
+            /* width: 100%; */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form input[type="submit"] {
+            background-color: #0072ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+
+        .books-container {
+            /* max-width: 60%;
+            height: auto; */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 10px;
+            /* overflow: scroll; */
+            /* overflow-y: auto; */
+            /* max-height: 90vh; */
+            /* display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+          gap: 20px; */
+        }
+
+        .book-card {
+            /* width: 400px; */
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .book-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .book-card h2,
+        .book-card h3,
+        .book-card h4 {
+            margin: 10px 0;
+        }
+
+        .book-card button {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            &.delete{
+                background-color: red;
+                &:hover{
+                    background-color: #c93030;
+                }
+            }
+        }
+
+        .book-card button:hover {
+            background-color: #005bb5;
+        }
+        .output{
+            height: 97vh;
+            overflow: scroll;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+   </style>
+
+</head>
+<body>
+    <center>
+
+        <h1>Book Store</h1>
+    </center>
+    <div class="container">
+        
+        <div class="form-div">
+
+            <form action="/insert" method="post">
+        
+                <label for="image_link">Image Link:</label>
+                <input type="text" id="image_link" name="image_link" required>
+        
+                <label for="book_name">Book Name:</label>
+                <input type="text" id="book_name" name="title" required>
+        
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+        
+                <label for="published_year">Published Year:</label>
+                <input type="text" id="published_year" name="published_year" required>
+        
+                <label for="pages">Pages:</label>
+                <input type="text" id="pages" name="pages" required>
+        
+                <label for="published_copies">Published Copies:</label>
+                <input type="text" id="published_copies" name="published_copies" required>
+        
+                <input type="submit">
+            </form>
+        </div>
+        <div class="output">
+        <div class="books-container">
+                <% data.map((e) => { %>
+                    <div class="book-card">
+                        <img src=<%= e.image_link %> alt="Image Not Found">
+                        <h2><%= e.title %></h1>
+                        <h3>Author: <%= e.author %></h3>
+                        <h4>Published Year: <%= e.published_year %></h4>
+                        <h4>Pages: <%= e.pages %></h4>
+                        <h4>Published Copies:<%= e.published_copies %></h4>
+                        <div>
+                            <a href="./deleteBook?id=<%= e.id %>"><button class="delete">Delete</button></a>
+                            <a href="./editBook?id=<%= e.id %>"><button>Edit</button></a>
+                        </div>
+                    </div>
+                <% }) %>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
