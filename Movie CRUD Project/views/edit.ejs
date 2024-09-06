@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+
+    <link rel="stylesheet" href="../public/css/edit.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Edit Movie</h1>
+
+        <form action="/update?id=<%= editedData.id %>" method="post" enctype="multipart/form-data" class="form-container">
+            <label for="image" class="list img">Upload Image</label>
+            <input type="file" name="image" class="list" id="image" style="display: none;">
+            <input type="text" placeholder="Enter Movie Name" name="title" value="<%= editedData.title %>" class="list" required>
+            <input type="text" placeholder="Enter Category" name="category" value="<%= editedData.category %>" class="list" required>
+            <input type="text" placeholder="Enter Type" name="type" value="<%= editedData.type %>" class="list" required>
+            <input type="text" placeholder="Enter Language" name="language" value="<%= editedData.language %>" class="list" required>
+            <input type="submit" class="btn-sub">
+        </form>
+    </div>
+    
+</body>
+</html>

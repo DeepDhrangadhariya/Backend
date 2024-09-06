@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="../public/css/index.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="title_div">
+            <h1>Movies</h1>
+        </div>
+
+        <div class="section">
+            <div class="add_div">
+                <a href="/form" class="btn_add" ><button>Add Movie</button></a>
+            </div>
+            <div class="movies_container">
+                <div class="movies">
+                    <img src="../public/image/kabir singh.jpg" alt="">
+                    <h3>Kabir Singh</h3>
+                    <p>Action</p>
+                    <p>A</p>
+                    <p>Hindi</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/smile.jpg" alt="">
+                    <h3>Smile</h3>
+                    <p>Horror</p>
+                    <p>UA</p>
+                    <p>English</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/animal.jpg" alt="">
+                    <h3>Animal</h3>
+                    <p>Action</p>
+                    <p>A</p>
+                    <p>Hindi</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/pk.jpg" alt="">
+                    <h3>PK</h3>
+                    <p>Comedy</p>
+                    <p>UA</p>
+                    <p>Hindi</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/deadpool.jpg" alt="">
+                    <h3>Deadpool & Wolverine</h3>
+                    <p>Action, Comedy</p>
+                    <p>A</p>
+                    <p>English</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/joker.jpg" alt="">
+                    <h3>Joker</h3>
+                    <p>Thriller</p>
+                    <p>UA</p>
+                    <p>English</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/batman.png" alt="">
+                    <h3>Batman</h3>
+                    <p>Action</p>
+                    <p>UA</p>
+                    <p>English</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <div class="movies">
+                    <img src="../public/image/avengers.jpg" alt="">
+                    <h3>Avengers</h3>
+                    <p>Action, Thriller</p>
+                    <p>UA</p>
+                    <p>English</p>
+                    <div class="btn_div">
+                        <a><button class="dlt" id="dlt"  style="background: rgba(253, 63, 63, 0.233); color: gray;">Delete</button></a>
+                        <a><button class="edt" id="edt"  style="background: rgba(114, 114, 242, 0.233); color: gray;">Edit</button></a>
+                    </div>
+                </div>
+                <% data.map(e => { %>
+                    <div class="movies">
+                        <img src="../uploads/<%= e.image %>" alt="">
+                        <h3><%= e.title %></h3>
+                        <p><%= e.category %></p>
+                        <p><%= e.type %></p>
+                        <p><%= e.language %></p>
+                        <div class="btn_div">
+                            <a href="/delete?id=<%= e.id %>"><button class="dlt">Delete</button></a>
+                            <a href="/edit?id=<%= e.id %>"><button class="edt">Edit</button></a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    let deleteButtons = document.querySelectorAll("#dlt");
+    let editButtons = document.querySelectorAll("#edt");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            alert("This Is Demo Movie You Can't Delete It \n\n If You Want To Use Delete Feature You Need To Add Your Own Movie Then You Can")
+        });
+    });
+
+    editButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            alert("This Is Demo Movie You Can't Edit It \n\n If You Want To Use Edit Feature You Need To Add Your Own Movie Then You Can")
+        });
+    });
+
+</script>
+</html>

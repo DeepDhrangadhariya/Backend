@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+
+    <link rel="stylesheet" href="../public/css/form.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Add Movie</h1>
+
+        <form action="/insert" method="post" enctype="multipart/form-data" class="form-container">
+            <label for="image" class="list img">Upload Image</label>
+            <input type="file" name="image" class="list" id="image" style="display: none;" required>
+            <input type="text" placeholder="Enter Movie Name" name="title" class="list" required>
+            <input type="text" placeholder="Enter Category" name="category" class="list" required>
+            <input type="text" placeholder="Enter Type" name="type" class="list" required>
+            <input type="text" placeholder="Enter Language" name="language" class="list" required>
+            <input type="submit" class="btn-sub">
+        </form>
+    </div>
+    
+</body>
+</html>
