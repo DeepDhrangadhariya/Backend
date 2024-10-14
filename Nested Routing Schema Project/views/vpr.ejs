@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
   <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
@@ -15,67 +15,56 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
-    <%-include("aside")%>
-
+    <%- include("aside") %>
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
-      <%-include("header")%>
-
+      <%- include("header") %>
       <!--  Header End -->
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title mb-0">Static Table</h5>
-            </div>
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Product category</th>
-                <th>Product Sub Category</th>
-                <th>Product Image</th>
-               
-                <th>Actions</th>
-              </tr>  
-              </thead>
-              <tbody>
-                <% data.map((el,i)=>{ %>
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Static Table</h5>
+                </div>
+                <table class="table">
+                  <thead>
                   <tr>
-                    <td><%=el.prname%></td>
-                    <td><%=el.categoryid.acg%></td>
-                    <td><%=el.subcategoryid.subacg%></td>
-                    <td><img src="/<%=el.image%>" alt="" width="100px"></td>
-
-                    <td>
-                      <a href="/product/deletedata?id=<%=el.id%>"><button class="btn btn-primary">Delete</button></a>
-
-                      <a href="/product/editpr?id=<%=el.id%>"><button class="btn btn-primary">Edit</button></a>
-                  </td>
-                  </tr>
-           <%     })%>
-               </tbody>
-            </table>
-          </div>
-        
-         
-          
-        </div>
-      </div>
-      <!-- ============================================================== -->
-      <!-- End PAge Content -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-      <!-- Right sidebar -->
-      <!-- ============================================================== -->
-      <!-- .right-sidebar -->
-      <!-- ============================================================== -->
-      <!-- End Right sidebar -->
-      <!-- ============================================================== -->
-    </div>
+                    <th>Product Name</th>
+                    <th>Product category</th>
+                    <th>Product Sub Category</th>
+                    <th>Product Image</th>
+                   
+                    <th>Actions</th>
+                  </tr>  
+                  </thead>
+                  <tbody>
+                    <% data.map((el,i)=>{ %>
+                      <tr>
+                        <td><%=el.prname%></td>
+                        <td><%=el.categoryid.acg%></td>
+                        <td><%=el.subcategoryid.subacg%></td>
+                        <td><img src="/<%=el.image%>" alt="" width="100px"></td>
     
+                        <td>
+                          <a href="/product/deletedata?id=<%=el.id%>"><button class="btn btn-primary">Delete</button></a>
+    
+                          <a href="/product/editpr?id=<%=el.id%>"><button class="btn btn-primary">Edit</button></a>
+                      </td>
+                      </tr>
+               <%     })%>
+                   </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        <div class="py-6 px-6 text-center">
+          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
+              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com/" target="_blank"
+              class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+        </div>
       </div>
     </div>
   </div>
