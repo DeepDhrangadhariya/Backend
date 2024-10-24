@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between links */
+    background-color: #444;
+    padding: 10px;
+    align-items: center;
+  }
+  
+  .navbar-list {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Make the list take up available space */
+  }
+  
+  .navbar-item {
+    margin-left: 20px;
+  }
+  
+  .navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  .navbar-link:hover {
+    background-color: #575757;
+    border-radius: 5px;
+  }
+  
+  /* Align logout button to the right */
+  .logout {
+    margin-left: auto; /* Push the logout button to the right */
+  }
+  
