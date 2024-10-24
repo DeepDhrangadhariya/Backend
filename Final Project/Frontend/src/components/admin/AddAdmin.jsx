@@ -10,41 +10,45 @@ const AddAdmin = () => {
     email: '',
     phone: '',
     password: '',
-    image: null,
+    image: '',
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAdminDetails({
-      ...adminDetails,
-      [name]: value,
-    });
-  };
+    const {files, name, value } = e.target;
+    
 
-  const handleFileChange = (e) => {
-    setAdminDetails({
-      ...adminDetails,
-      image: e.target.files[0],
-    });
+    if(name === 'image'){
+      setAdminDetails((prevstate)=>({
+        ...prevstate,
+        [name]: files[0]
+      }))
+    }else{
+      setAdminDetails((prevstate)=>({
+        ...prevstate,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('username', adminDetails.username);
-    formData.append('email', adminDetails.email);
-    formData.append('phone', adminDetails.phone);
-    formData.append('password', adminDetails.password);
-    formData.append('image', adminDetails.image); // image file
+    // const formData = new FormData();
+    // formData.append('username', adminDetails.username);
+    // formData.append('email', adminDetails.email);
+    // formData.append('phone', adminDetails.phone);
+    // formData.append('password', adminDetails.password);
+    // formData.append('image', adminDetails.image);
 
     const token = localStorage.getItem('adminToken'); // Ensure you're sending the token
-      const response = await axios.post(`http://localhost:1024/admin/addAdmin`, formData, {
+      const response = await axios.post(`http://localhost:1024/admin/addAdmin`, adminDetails, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
+    
+      console.log(response)
 
     // Handle form submission (e.g., API call to add the admin)
     console.log(adminDetails);
@@ -54,7 +58,7 @@ const AddAdmin = () => {
       email: '',
       phone: '',
       password: '',
-      image: null,
+      image: '',
     });
   };
 
@@ -71,8 +75,7 @@ const AddAdmin = () => {
           <input
             type="file"
             name="image"
-            accept="image/*"
-            onChange={handleFileChange}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">

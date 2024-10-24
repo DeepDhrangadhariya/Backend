@@ -6,7 +6,7 @@ const adminAuth = require("../config/adminAuth")
 
 const diskStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/admin/')
+        cb(null, 'uploads/admin')
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + "-" + file.originalname)

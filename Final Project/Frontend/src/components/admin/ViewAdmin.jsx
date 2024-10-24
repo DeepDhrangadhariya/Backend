@@ -19,7 +19,7 @@ const ViewAdmin = () => {
               Authorization: `Bearer ${token}`, // If using JWT for auth
             },
           });
-          setAdmins(response.data);
+          setAdmins(response.data.data);
         }
       } catch (error) {
         console.log(error)
@@ -30,10 +30,17 @@ const ViewAdmin = () => {
     fetchAdmins();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     // Implement the delete functionality here (e.g., API call to delete admin)
-    setAdmins(admins.filter(admin => admin.id !== id));
-    console.log(`Admin with ID ${id} deleted.`);
+    // setAdmins(admins.filter(admin => admin.id !== id));
+    // console.log(`Admin with ID ${id} deleted.`);
+    const token = localStorage.getItem('adminToken');
+    const response = await axios.delete(`http://localhost:1024/admin/deleteAdmin?id=${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+    console.log(response)
   };
 
   const handleEdit = (id) => {
@@ -60,25 +67,28 @@ const ViewAdmin = () => {
               <th>Username</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Actions</th>
+              <th colSpan={2}>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {admins.map(admin => (
-              <tr key={admin.id}>
+            {admins.map((admin) => (
+              <tr key={admin._id}>
                 <td>
-                  <img src={admin.image} alt={`${admin.username}'s profile`} className="profile-image" />
+                  <img src={`http://localhost:1024/uploads/admin/${admin.image}`} height={100} width={100} className="profile-image" />
                 </td>
                 <td>{admin.username}</td>
                 <td>{admin.email}</td>
                 <td>{admin.phone}</td>
                 <td>
-                  <Link to='admin/editAdmin?id=${admin.id}'>
-                    <button onClick={() => handleEdit(admin.id)}>Edit</button>
-                  </Link>
-                  <Link to='admin/deleteAdmin?id=${admin.id}'>
-                    <button onClick={() => handleDelete(admin.id)}>Delete</button>
-                  </Link>
+
+                    <button onClick={() => handleEdit(admin._id)}>Edit</button>
+
+
+                </td>
+                <td>
+                 
+                    <button onClick={() => handleDelete(admin._id)}>Delete</button>
+
                 </td>
               </tr>
             ))}

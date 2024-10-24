@@ -5,6 +5,7 @@ const db = require("./config/database")
 const path = require("path")
 const session = require("express-session")
 const cors = require("cors")
+const bodyParser = require("body-parser")
 
 app.use(cors({
     origin: 'http://localhost:3000', // React app's URL
@@ -13,6 +14,7 @@ app.use(cors({
 
 app.use(express.urlencoded())
 app.use(express.json())
+app.use(bodyParser.json())
 app.use("/uploads/admin", express.static(path.join(__dirname, "uplods/admin")))
 app.use("/uploads/manager", express.static(path.join(__dirname, "uploads/manager")))
 app.use("/uploads/employee", express.static(path.join(__dirname, "uploads/employee")))
